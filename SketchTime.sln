@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SketchTime", "SketchTime\SketchTime.csproj", "{7DF13E9D-DB00-457B-99F9-FD0C302DE45E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DF13E9D-DB00-457B-99F9-FD0C302DE45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF13E9D-DB00-457B-99F9-FD0C302DE45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF13E9D-DB00-457B-99F9-FD0C302DE45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF13E9D-DB00-457B-99F9-FD0C302DE45E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA072609-C1D5-4C6D-B3E3-715DE3EE1BA6}
+	EndGlobalSection
+EndGlobal

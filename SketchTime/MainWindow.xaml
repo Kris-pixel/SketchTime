@@ -1,0 +1,146 @@
+﻿<Window x:Class="SketchTime.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SketchTime"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="SketchTime" WindowState="Maximized" AllowDrop="True"
+        ScrollViewer.VerticalScrollBarVisibility="Disabled" MinWidth="1000" MinHeight="600" 
+        Width="1000" Height="600" Icon="sketchTime.png">
+    <Window.CommandBindings>
+        <!-- <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />-->
+        <CommandBinding Command="ApplicationCommands.Close" Executed="Close_Executed"/>
+    </Window.CommandBindings>
+
+    <Grid Style="{DynamicResource menu}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="675*"/>
+            <ColumnDefinition Width="319*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Grid.Row="0"
+            Orientation="Horizontal"  Margin="0" MinHeight="30" >
+
+            <Button Name="MFile" Content="{StaticResource _File}" Width="55" Height="30"
+                      Template="{StaticResource topMenu}" Style="{StaticResource menuIt}"
+                    MouseEnter="MFile_MouseEnter"/>
+
+
+            <Button Name="MEdit" Content="{StaticResource _Edit}" Width="70" Height="30" 
+                      Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"
+                    MouseEnter="MEdit_MouseEnter"/>
+
+
+
+            <Button Name="Galery" Content="{StaticResource _Galery}" Width="60" Height="30" 
+                      Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"
+                    Click="Galery_Click"/>
+
+            <Button Name="About" Content="{StaticResource _About}" Width="91.333" Height="30"
+                      Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"/>
+
+        </StackPanel>
+        <Grid ShowGridLines="False" Grid.Row="1" Style="{StaticResource win}" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="400"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition MinWidth="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Name="fileMenu" Panel.ZIndex="1" HorizontalAlignment="Left" 
+                        MouseLeave="MFile_MouseLeave" Visibility="Collapsed" >
+                <Button Content="{StaticResource _Save}" Width="100" Height="30" 
+                          Template="{StaticResource topMenu}" Style="{StaticResource menuIt}" HorizontalAlignment="Left"/>
+
+                <Button Content="{StaticResource _Exit}" Width="100" Height="30" 
+                          Template="{StaticResource topMenu}" Style="{StaticResource menuIt}"
+                        Command="ApplicationCommands.Close"/>
+            </StackPanel>
+            <StackPanel x:Name="editMenu" Panel.ZIndex="1" HorizontalAlignment="Left" 
+                        MouseLeave="MEdit_MouseLeave" Margin="60,0,0,0" Visibility="Collapsed">
+                <Button Content ="{StaticResource _Undo}"  Width="150" Height="30"
+                          Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"/>
+                <Button Content="{StaticResource _Redo}" Width="150" Height="30"
+                          Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"/>
+                <Separator Style="{StaticResource separate}" />
+                <Button Content="{StaticResource _Change}" Width="150" Height="30" 
+                           Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"
+                        Click="ButtonChange_Click"/>
+                <Button Name="ResizeCanvas" Content="{StaticResource _Resize}" Width="150" Height="30"
+                           Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"
+                        Click="ResizeCanvas_Click"/>
+            </StackPanel>
+            <DockPanel x:Name="Img_place" Grid.Column="0" MinWidth="400" MinHeight="600" Margin="0,0,10.4,-31.8" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                <Border Style="{StaticResource stack}" DockPanel.Dock="Top" HorizontalAlignment="Center" Height="35">
+                    <StackPanel   Orientation="Horizontal" >
+                        <Label VerticalAlignment="Center"  FontSize="16"
+                                   Name="TBCountDown"
+                                   Width="75" Height="25"
+                               Margin="6,2,1,2" Style="{StaticResource labels}" Padding="6,0,3,0"/>
+                        
+                        <!-- комбобокс меняет цвет когда находится в тулбаре-->
+                    <Button Name="Prev" Style="{DynamicResource but}"
+                            Template="{StaticResource toolsB}">
+                        <Button.Content>
+                            <Image Source="back.png" Stretch="None"/>
+                        </Button.Content>
+                    </Button>
+                    <ToggleButton Name="Stop" Style="{DynamicResource tBut}"
+                                  Template="{StaticResource toolsTogl}" Click="Stop_Click" Content="| |" FontWeight="Bold" >
+                    </ToggleButton>
+                    <Button Name="Next" Style="{DynamicResource but}"
+                            Template="{StaticResource toolsB}">
+                        <Button.Content>
+                            <Image Source="next.png" Stretch="None"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Name="Img_info"  Style="{DynamicResource but}"
+                            Template="{StaticResource toolsB}">
+                        <Button.Content>
+                            <Image Source="info.png" Stretch="None"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                </Border>
+                <Image Source="7c67fbb71179bc831d1e3252f15fd18b.jpg" DockPanel.Dock="Top" Margin="0,4.6,0,91" />
+
+            </DockPanel>
+            <Rectangle VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Fill="#222831"></Rectangle>
+
+            <DockPanel x:Name="draw_place" Grid.Column="2"  MinWidth="400" MinHeight="600" Margin="0">
+                <Border DockPanel.Dock="Right" VerticalAlignment="Top"  Width="30" Height="400" Style="{StaticResource stack}" Margin="0,5,0,0">
+                <StackPanel   Orientation="Vertical" >
+                    <ToggleButton Name="Brush"  Style="{DynamicResource tBut}" ToolTip="Кисть"
+                                  HorizontalAlignment="Stretch" Height="30"
+                                  Template="{StaticResource toolsTogl}" Click="Brush_Click" IsChecked="True">
+                        <ToggleButton.Content>
+                            <Image Source="drawing.png" Stretch="None"/>
+                        </ToggleButton.Content>
+                    </ToggleButton>
+                    <ToggleButton Name="Eraser" Style="{DynamicResource tBut}" ToolTip="Ластик"
+                                  HorizontalAlignment="Stretch" Height="30"
+                                  Template="{StaticResource toolsTogl}" Click="Eraser_Click">
+                        <ToggleButton.Content>
+                            <Image Source="eraserr.png" Stretch="None"/>
+                        </ToggleButton.Content>
+                    </ToggleButton>
+                    <xctk:ColorSpectrumSlider Name="ColorPic" Orientation="Vertical" Width="30" Height="100" SelectedColor="Black" ValueChanged="ColorPic_ValueChanged"/>
+                </StackPanel>
+                </Border>
+                <Viewbox DockPanel.Dock="Top" Margin="0,0,0,62">
+                    <InkCanvas  Name="MainCanvas"  Margin="35"
+                    EditingMode="Ink" Height="600" Width="450" />
+                </Viewbox>
+            </DockPanel>
+        </Grid>
+        <StatusBar Grid.Row="2" Style="{DynamicResource status}" Grid.ColumnSpan="2">
+
+        </StatusBar>
+    </Grid>
+</Window>

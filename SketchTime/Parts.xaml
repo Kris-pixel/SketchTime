@@ -1,0 +1,66 @@
+﻿<Page x:Class="SketchTime.Parts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SketchTime"
+      mc:Ignorable="d" 
+      d:DesignHeight="360" d:DesignWidth="300"
+      Title="Parts"
+      ShowsNavigationUI="True">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="1"
+            Content="Конфигурация:" HorizontalAlignment="Right"  VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
+        <ComboBox Grid.Column="1" Grid.Row="1"
+            HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120">
+            <ComboBoxItem>Кожа</ComboBoxItem>
+            <ComboBoxItem>Кости</ComboBoxItem>
+            <ComboBoxItem>Мышцы</ComboBoxItem>
+            <ComboBoxItem>Гипс</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">Любая</ComboBoxItem>
+        </ComboBox>
+
+
+        <Label Grid.Column="0" Grid.Row="2" 
+            Content="Вид:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
+        <ComboBox Grid.Column="1" Grid.Row="2"
+            HorizontalAlignment="Center" VerticalAlignment="Center" Width="120">
+            <ComboBoxItem>Сверху</ComboBoxItem>
+            <ComboBoxItem>Снизу</ComboBoxItem>
+            <ComboBoxItem>Сбоку</ComboBoxItem>
+            <ComboBoxItem>Спереди</ComboBoxItem>
+            <ComboBoxItem>Сзади</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">Любой</ComboBoxItem>
+        </ComboBox>
+
+        <Label Grid.Column="0" Grid.Row="3"
+            Content="Время:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}" Padding="5"/>
+        <ComboBox Grid.Column="1" Grid.Row="3"
+            HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Margin="0">
+            <ComboBoxItem>30 секунд</ComboBoxItem>
+            <ComboBoxItem>1 минута</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">5 минут</ComboBoxItem>
+            <ComboBoxItem>10 минут</ComboBoxItem>
+            <ComboBoxItem>20 минут</ComboBoxItem>
+            <ComboBoxItem>30 минут</ComboBoxItem>
+            <ComboBoxItem>без таймера</ComboBoxItem>
+        </ComboBox>
+
+
+    </Grid>
+</Page>

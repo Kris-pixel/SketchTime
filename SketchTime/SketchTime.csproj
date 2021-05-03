@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DF13E9D-DB00-457B-99F9-FD0C302DE45E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SketchTime</RootNamespace>
+    <AssemblyName>SketchTime</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="additionalClasses.cs" />
+    <Compile Include="Animals.xaml.cs">
+      <DependentUpon>Animals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Human.xaml.cs">
+      <DependentUpon>Human.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts.xaml.cs">
+      <DependentUpon>Parts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SetParametrs.xaml.cs">
+      <DependentUpon>SetParametrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics.xaml.cs">
+      <DependentUpon>Statistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Things.xaml.cs">
+      <DependentUpon>Things.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinGalery.xaml.cs">
+      <DependentUpon>WinGalery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinResizeCanvas.xaml.cs">
+      <DependentUpon>WinResizeCanvas.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Animals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Galery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Human.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="lang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Galery.xaml.cs">
+      <DependentUpon>Galery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Parts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetParametrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Things.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinGalery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinResizeCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="7c67fbb71179bc831d1e3252f15fd18b.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\eraserr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\drawing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\sketchTime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play-button-arrowhead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\8bf5a957c749a8d02b1fd8a13611f452.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\69f9335c6f6e8d9391a4cfef349736d1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\aebbbc76deb84694b02d0f75c70121e1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\617b45c5d09a54cf9156d1b185a89c1c.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\e57364a245648d76e4fb4a59a19b8dfe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\037018ed2689a6d443b64bc30c5a0e8e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\b0393285090a2f4a79dab85c4335edff--asian-street-fashion-asian-street-style.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\23.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\D3jtnX_EjZAAYXkg_BwSsdL6W0tjp8sU4YsYjcmCZPE.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\7c67fbb71179bc831d1e3252f15fd18b.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\2a29f86937be92fe582757f268019283.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\2-10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\หมวก4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\original.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\Esmrk6_XMAQJxIT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\35681a5b1210d0178aad6ca527a20248.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\2e81a21eb4fe0f0aebee4785584d8f77.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\5aef8bced3788cfeefbe61df11c4381a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\07549bbdf459cd38a29dacb4d1a95504.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\2f3504d2aa725ae08b584900e4ea373d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\1527af03731256b98271aebfbeded611.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\c24a4f8811adfde0339d248300b7554b.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\7fa4bf5d4125eceb868c76896eae85d9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\996aef693ed7cb1265f04680c45b8615.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\b00f6c4e8380381dd7c2bf76ecb6f169.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\46bb41e497c4285d6a3a40ffd95a399e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\9c62bba4f436da1b3e9cb36628a40ee7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\5fc473a94136a65f30ab4610314fab31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\fd92ca20d0a6e51ebd51e977c8149dc1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image-gallery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sketchTime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="drawing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="eraserr.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

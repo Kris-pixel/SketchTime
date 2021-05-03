@@ -1,0 +1,60 @@
+﻿<Window x:Class="SketchTime.WinGalery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SketchTime"
+        mc:Ignorable="d"
+        Title="WinGalery" Height="450" Width="800"
+         WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Border Style="{StaticResource stack}">
+        <Grid Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="×" Grid.Row="0" Grid.Column="1"
+                   Height="25" Width="20"
+                    FontWeight="Black"
+                   Style="{StaticResource exitB}"
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Right" Click="ButtonExit_Click" Padding="0" Margin="0,0,-0.2,0" Grid.RowSpan="2"
+                       />
+            <Grid Grid.Row="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <RadioButton Grid.Row="0" ToolTip="Галерея"
+                    Content=" " IsChecked="True"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             Style="{StaticResource sectionRadio}"
+                             Click="RadioButtonGalery_Click"/>
+                <Image Grid.Row="0" Source="image-gallery.png" Stretch="None" MouseDown="Image_MouseDown" ToolTip="Галерея"/>
+                <RadioButton  Grid.Row="1" ToolTip="Статистика"
+                    Content=" "
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             Style="{StaticResource sectionRadio}"
+                             Checked="RadioButtonStatistic_Checked"/>
+                <Image Grid.Row="1"  Source="Resources/bars.png" Stretch="None" MouseDown="Image_MouseDown_1" ToolTip="Статистика"/>
+            </Grid>
+
+
+            <Frame Grid.Row="1" Grid.Column="1"
+                   Name="framPlace" Content="frame" NavigationUIVisibility="Hidden" />
+
+        </Grid>
+    </Border>
+
+</Window>
