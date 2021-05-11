@@ -1,0 +1,101 @@
+﻿<Window x:Class="SketchTime.AddWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SketchTime"
+        mc:Ignorable="d"
+        Title="AddWin"  Height="452" Width="302"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" MouseMove="Window_MouseMove" Closing="Window_Closing">
+    <Border Style="{StaticResource stack}">
+        <Grid Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition Height="230"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Label Content="Добавить изображений" Opacity="0.6"
+                   Style="{StaticResource standarLabel}"
+                   Grid.Row="0"/>
+            <Button Content="×" Grid.Row="0" IsCancel="True"
+                   Height="25" Width="20"
+                    FontWeight="Black"
+                   Style="{StaticResource exitB}"
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Right" Click="ButtonExit_Click" Padding="0" Margin="0,0,-0.2,0" Grid.RowSpan="2"
+                       />
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <RadioButton Content="Человек" IsChecked="True"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource sectionRadio}"
+                             Click="RadioButtonHuman_Click"/>
+                <RadioButton Content="Части тела"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource sectionRadio}"
+                             Checked="RadioButtonParts_Checked"/>
+                <RadioButton Content="Животные"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource sectionRadio}"
+                             Checked="RadioButtonAnimals_Checked"/>
+                <RadioButton Content="Предметы"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource sectionRadio}"
+                             Checked="RadioButtonThings_Checked"/>
+            </StackPanel>
+
+
+            <Frame Grid.Row="2" Name="framPlace" Content="frame" NavigationUIVisibility="Hidden" />
+
+           
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Width="200" Height="50"
+                    BorderBrush="#29a19c"
+                    CornerRadius="5"
+                    VerticalAlignment="Bottom"
+                    BorderThickness="3">
+                    <Button IsDefault="True" Name="Addbut"
+            Content="Добавить" Style="{StaticResource exitB}" FontSize="20" FontWeight="Bold"
+                HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="Addbut_Click"/>
+                </Border>
+                <Image Grid.Row="1"
+                   Height="100" Width="100" Name="AimImg"/>
+            </Grid>
+
+            <Border Grid.Row="4" Width="100" Height="26"
+                    VerticalAlignment="Top"
+                    BorderBrush="#29a19c"
+                    CornerRadius="5"
+                Margin="0,0,115,0"
+                    BorderThickness="1">
+                <Button IsDefault="True" Name="OKbut"
+            Content="OK" Style="{StaticResource exitB}"
+                HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" Click="ButtonOK_Click"/>
+            </Border>
+            <Border Grid.Row="4" Width="100" Height="26"
+                    VerticalAlignment="Top"
+                    BorderBrush="#29a19c"
+                    CornerRadius="5"
+                Margin="115,0,0,0"
+                    BorderThickness="1">
+                <Button  IsCancel="True"
+            Content="Отмена" Style="{StaticResource exitB}"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" />
+            </Border>
+        </Grid>
+    </Border>
+</Window>

@@ -20,9 +20,22 @@ namespace SketchTime
     /// </summary>
     public partial class Galery : Page
     {
-        public Galery()
+        public Galery(string curDir)
         {
             InitializeComponent();
+            using (var context = new SKETCH_TTIMEEntities())
+            {
+                var imgs = context.IMG_FILES.ToList();
+                foreach (var i in imgs)
+                {
+                    Image img = new Image();
+                    img.Height = 170;
+                    img.Width = 170;
+                    img.Margin = new Thickness(5, 5, 5, 5);
+                    img.Source = BitmapFrame.Create(new Uri(curDir + i.IMG_FILEDATA));
+                    AllImg.Children.Add(img);
+                }
+            }     
         }
     }
 }

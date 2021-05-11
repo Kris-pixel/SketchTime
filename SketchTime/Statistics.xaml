@@ -5,10 +5,306 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SketchTime"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="Statistics">
 
-    <Grid Background="#FF708BBF">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="137*"/>
+            <RowDefinition Height="133*"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="All" VerticalAlignment="Center"
+               Grid.Row="0"
+            Content="Всего изображений: " Style="{StaticResource statLabel}" FontSize="20"
+               Height="30"/>
+
         
+        <Grid Width="340" Grid.Row="0" HorizontalAlignment="Right">
+            <Label Content="Выполнено на:" Style="{StaticResource statLabel}"
+                HorizontalAlignment="Left"  FontSize="16"/>
+        <ProgressBar Name="AllProgress" Height="20" Width="200"
+                     Minimum="0" Maximum="100" Value="40" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+            <TextBlock Text="{Binding ElementName=AllProgress, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,90,0" />
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Label Content="Человек" Style="{StaticResource statLabel}"
+                   FontSize="16"  />
+                    <Grid Width="200" Margin="66,-15,0,0" VerticalAlignment="Top">
+                        <Label Content="Выполнено на:" Style="{StaticResource statLabel}"
+                HorizontalAlignment="Left"  FontSize="12"/>
+                        <ProgressBar Name="HumProgress" Height="15" Width="100"
+                     Minimum="0" Maximum="100" Value="40" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding ElementName=HumProgress, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,45,0" />
+                    </Grid>
+
+                </StackPanel>
+                <Label Name="AllHum" Content="Всего: "
+                    Style="{StaticResource statLabel}" Margin="20,0,0,0"/>
+
+                    <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Пол" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                    <Label Content="Мужской: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    <Label Content="Женский: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                </StackPanel>
+                    <StackPanel Margin="8,20,0,0">
+                        <Label Name="m" Content="М "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="w" Content="Ж "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="20,0,0,0">
+                        <Label  Content="Поза" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                <Label  Content="Динамическая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Статическая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+            </StackPanel>
+                    <StackPanel Margin="-22,20,0,0">
+                        <Label Name="DynamicHum" Content="Д "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="StaticHum" Content="С "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+            <Label  Content="Конфигурация" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                <Label  Content="Кожа: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Кости: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Мышцы: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Гипс: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                </StackPanel>
+                    <StackPanel Margin="-14,20,0,0">
+                        <Label Name="SkinHum" Content="К"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="BonesHum" Content="К "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="MuscleHum" Content="М "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="GipsHum" Content="Г "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="0">
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                    <Label Content="Животные" Style="{StaticResource statLabel}"
+                   FontSize="18" Height="30" />
+                    <Grid Width="200" Margin="46,5,0,0" VerticalAlignment="Top">
+                        <Label Content="Выполнено на:" Style="{StaticResource statLabel}"
+                HorizontalAlignment="Left"  FontSize="12"/>
+                        <ProgressBar Name="AniProgress" Height="15" Width="100"
+                     Minimum="0" Maximum="100" Value="40" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding ElementName=AniProgress, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,45,0" />
+                    </Grid>
+                </StackPanel>
+
+                <Label Name="AllA" Content="Всего: "
+                    Style="{StaticResource statLabel}" Margin="20,0,0,0"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Разновидность" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                        <Label Content="Млекопитающие: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Content="Птицы: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Content="Ящерицы: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Content="Морские: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="-23,20,0,0">
+                        <Label Name="ml" Content="М"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="bird" Content="П"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="sl" Content="Я"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="sea" Content="М"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="30,0,0,0">
+                        <Label  Content="Поза" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                        <Label Content="Динамическая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Content="Статическая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="-21,20,0,0">
+                        <Label Name="DynamicA" Content="Д"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="StaticA" Content="С"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label  Content="Конфигурация" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                <Label  Content="Кожа: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Кости: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Мышцы: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label Content="Гипс: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0">
+                        <Label Name="SkinA" Content="К"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="BonesA" Content="К"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="MuscleA" Content="М"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="GipsA" Content="Г"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,30,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Часть тела" Style="{StaticResource statLabel}"
+                   FontSize="18" Height="30"
+                   Grid.Row="0" Grid.Column="0"/>
+                    <Grid Width="200" Margin="46,5,0,0" VerticalAlignment="Top">
+                        <Label Content="Выполнено на:" Style="{StaticResource statLabel}"
+                HorizontalAlignment="Left"  FontSize="12"/>
+                        <ProgressBar Name="PartProgress" Height="15" Width="100"
+                     Minimum="0" Maximum="100" Value="40" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding ElementName=PartProgress, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,45,0" />
+                    </Grid>
+                </StackPanel>
+                <Label Name="AllPart" Content="Всего: "
+                    Style="{StaticResource statLabel}" Margin="20,0,0,0"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                <Label  Content="Конфигурация" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                <Label Content="Кожа: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label Content="Кости: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label Content="Мышцы: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label Content="Гипс: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0">
+                        <Label Name="SkinP" Content="К"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="BonesP" Content="К"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="MuscleP" Content="М"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="GipsP" Content="Г"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,30,0,0">
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                    <Label Content="Предметы" Style="{StaticResource statLabel}"
+                   FontSize="18" Height="30"/>
+                    <Grid Width="200" Margin="44,5,0,0" VerticalAlignment="Top">
+                        <Label Content="Выполнено на:" Style="{StaticResource statLabel}"
+                HorizontalAlignment="Left"  FontSize="12"/>
+                        <ProgressBar Name="TProgress" Height="15" Width="100"
+                     Minimum="0" Maximum="100" Value="40" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding ElementName=TProgress, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,45,0" />
+                    </Grid>
+                </StackPanel>
+                
+                <Label Name="AllT" Content="Всего: "
+                    Style="{StaticResource statLabel}" Margin="20,0,0,0"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                <Label Content="Категория" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                <Label  Content="Предметы быта: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Геометрия: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Другие: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                </StackPanel>
+                    <StackPanel Margin="-24,20,0,0">
+                        <Label Name="Stuff" Content="П "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="Geom" Content="Г"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="OtherT" Content="Д"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="23,0,0,0">
+                <Label  Content="Поверхность" Foreground="#29a19c"
+                Style="{StaticResource statLabel}" FontSize="14" Margin="15,0,0,0"/>
+                <Label  Content="Матовая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Глянцевая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Прозрачная: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                <Label  Content="Другая: "
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                </StackPanel>
+                    <StackPanel Margin="-10,20,0,0">
+                        <Label Name="Math" Content="М"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="Gloss" Content="Г"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="Transp" Content="П"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                        <Label Name="OtherS" Content="Д"
+                    Style="{StaticResource statLabel}" Margin="30,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+
+        </Grid>
     </Grid>
 </Page>

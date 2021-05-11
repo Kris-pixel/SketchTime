@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6d9f3cf95bd24bea913e31a182f0c559" Name="Diagram1">
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.ANIMALS" Width="1.5" PointX="3.125" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.CONFIGURATION" Width="1.5" PointX="0.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.IMG_FILES" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.PARTS_OF_THE_BODY" Width="1.5" PointX="5.375" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.PEOPLE" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.POINTS_OF_VIEW" Width="1.5" PointX="2.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.POSTURES" Width="1.5" PointX="5.375" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKETCH_TTIMEModel.THINGS" Width="1.5" PointX="7.625" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__ANIMALS__A_ID__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__ANIMALS__CONFIG__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__ANIMALS__POINT_V__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__ANIMALS__POSTURE__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PARTS_OF___CONFI__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PEOPLE__CONFIG__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PARTS_OF___PR_ID__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PEOPLE__P_ID__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__THINGS__T_ID__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PARTS_OF___POINT__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PEOPLE__POINT_V__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__PEOPLE__POSTURE__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="SKETCH_TTIMEModel.FK__THINGS__POINT_V__2E1BDC42" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

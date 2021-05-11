@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище SKETCH_TTIMEModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ANIMALS">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="int" Nullable="false" />
+          <Property Name="SECTION" Type="varchar" MaxLength="13" />
+          <Property Name="NUMBER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPECIES" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="POSTURE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="POINT_V" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CONFIG" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONFIGURATION">
+          <Key>
+            <PropertyRef Name="C_KEY" />
+          </Key>
+          <Property Name="C_KEY" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="C_NAME" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMG_FILES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMG_FILEDATA" Type="varchar(max)" />
+          <Property Name="DISPLAY_SATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="PARTS_OF_THE_BODY">
+          <Key>
+            <PropertyRef Name="PR_ID" />
+          </Key>
+          <Property Name="PR_ID" Type="int" Nullable="false" />
+          <Property Name="SECTION" Type="varchar" MaxLength="13" />
+          <Property Name="NUMBER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POINT_V" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CONFIG" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEOPLE">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="SECTION" Type="varchar" MaxLength="13" />
+          <Property Name="NUMBER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SEX" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CLOTHES" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="POSTURE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="POINT_V" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CONFIG" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POINTS_OF_VIEW">
+          <Key>
+            <PropertyRef Name="V_KEY" />
+          </Key>
+          <Property Name="V_KEY" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="V_NAME" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POSTURES">
+          <Key>
+            <PropertyRef Name="P_KEY" />
+          </Key>
+          <Property Name="P_KEY" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="P_NAME" Type="varchar" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="THINGS">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="int" Nullable="false" />
+          <Property Name="SECTION" Type="varchar" MaxLength="13" />
+          <Property Name="NUMBER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SURFACE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="POINT_V" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ANIMALS__A_ID__25869641">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="A_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ANIMALS__CONFIG__29572725">
+          <End Role="CONFIGURATION" Type="Self.CONFIGURATION" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIGURATION">
+              <PropertyRef Name="C_KEY" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="CONFIG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ANIMALS__POINT_V__286302EC">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ANIMALS__POSTURE__276EDEB3">
+          <End Role="POSTURES" Type="Self.POSTURES" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSTURES">
+              <PropertyRef Name="P_KEY" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="POSTURE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTS_OF___CONFI__22AA2996">
+          <End Role="CONFIGURATION" Type="Self.CONFIGURATION" Multiplicity="1" />
+          <End Role="PARTS_OF_THE_BODY" Type="Self.PARTS_OF_THE_BODY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIGURATION">
+              <PropertyRef Name="C_KEY" />
+            </Principal>
+            <Dependent Role="PARTS_OF_THE_BODY">
+              <PropertyRef Name="CONFIG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTS_OF___POINT__21B6055D">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="PARTS_OF_THE_BODY" Type="Self.PARTS_OF_THE_BODY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="PARTS_OF_THE_BODY">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTS_OF___PR_ID__1FCDBCEB">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="PARTS_OF_THE_BODY" Type="Self.PARTS_OF_THE_BODY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARTS_OF_THE_BODY">
+              <PropertyRef Name="PR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__CONFIG__1CF15040">
+          <End Role="CONFIGURATION" Type="Self.CONFIGURATION" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIGURATION">
+              <PropertyRef Name="C_KEY" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="CONFIG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__P_ID__182C9B23">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__POINT_V__1BFD2C07">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__POSTURE__1B0907CE">
+          <End Role="POSTURES" Type="Self.POSTURES" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSTURES">
+              <PropertyRef Name="P_KEY" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="POSTURE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THINGS__POINT_V__2E1BDC42">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="THINGS" Type="Self.THINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="THINGS">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THINGS__T_ID__2C3393D0">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="THINGS" Type="Self.THINGS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="THINGS">
+              <PropertyRef Name="T_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SKETCH_TTIMEModelContainer">
+          <EntitySet Name="ANIMALS" EntityType="Self.ANIMALS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATION" EntityType="Self.CONFIGURATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMG_FILES" EntityType="Self.IMG_FILES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PARTS_OF_THE_BODY" EntityType="Self.PARTS_OF_THE_BODY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEOPLE" EntityType="Self.PEOPLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POINTS_OF_VIEW" EntityType="Self.POINTS_OF_VIEW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POSTURES" EntityType="Self.POSTURES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THINGS" EntityType="Self.THINGS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ANIMALS__A_ID__25869641" Association="Self.FK__ANIMALS__A_ID__25869641">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ANIMALS__CONFIG__29572725" Association="Self.FK__ANIMALS__CONFIG__29572725">
+            <End Role="CONFIGURATION" EntitySet="CONFIGURATION" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ANIMALS__POINT_V__286302EC" Association="Self.FK__ANIMALS__POINT_V__286302EC">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ANIMALS__POSTURE__276EDEB3" Association="Self.FK__ANIMALS__POSTURE__276EDEB3">
+            <End Role="POSTURES" EntitySet="POSTURES" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTS_OF___CONFI__22AA2996" Association="Self.FK__PARTS_OF___CONFI__22AA2996">
+            <End Role="CONFIGURATION" EntitySet="CONFIGURATION" />
+            <End Role="PARTS_OF_THE_BODY" EntitySet="PARTS_OF_THE_BODY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTS_OF___POINT__21B6055D" Association="Self.FK__PARTS_OF___POINT__21B6055D">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="PARTS_OF_THE_BODY" EntitySet="PARTS_OF_THE_BODY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTS_OF___PR_ID__1FCDBCEB" Association="Self.FK__PARTS_OF___PR_ID__1FCDBCEB">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="PARTS_OF_THE_BODY" EntitySet="PARTS_OF_THE_BODY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__CONFIG__1CF15040" Association="Self.FK__PEOPLE__CONFIG__1CF15040">
+            <End Role="CONFIGURATION" EntitySet="CONFIGURATION" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__P_ID__182C9B23" Association="Self.FK__PEOPLE__P_ID__182C9B23">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__POINT_V__1BFD2C07" Association="Self.FK__PEOPLE__POINT_V__1BFD2C07">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__POSTURE__1B0907CE" Association="Self.FK__PEOPLE__POSTURE__1B0907CE">
+            <End Role="POSTURES" EntitySet="POSTURES" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THINGS__POINT_V__2E1BDC42" Association="Self.FK__THINGS__POINT_V__2E1BDC42">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="THINGS" EntitySet="THINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THINGS__T_ID__2C3393D0" Association="Self.FK__THINGS__T_ID__2C3393D0">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="THINGS" EntitySet="THINGS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SKETCH_TTIMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ANIMALS">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTION" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPECIES" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTURE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="POINT_V" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CONFIG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IMG_FILES" Relationship="Self.FK__ANIMALS__A_ID__25869641" FromRole="ANIMALS" ToRole="IMG_FILES" />
+          <NavigationProperty Name="CONFIGURATION" Relationship="Self.FK__ANIMALS__CONFIG__29572725" FromRole="ANIMALS" ToRole="CONFIGURATION" />
+          <NavigationProperty Name="POINTS_OF_VIEW" Relationship="Self.FK__ANIMALS__POINT_V__286302EC" FromRole="ANIMALS" ToRole="POINTS_OF_VIEW" />
+          <NavigationProperty Name="POSTURES" Relationship="Self.FK__ANIMALS__POSTURE__276EDEB3" FromRole="ANIMALS" ToRole="POSTURES" />
+        </EntityType>
+        <EntityType Name="CONFIGURATION">
+          <Key>
+            <PropertyRef Name="C_KEY" />
+          </Key>
+          <Property Name="C_KEY" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="C_NAME" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ANIMALS" Relationship="Self.FK__ANIMALS__CONFIG__29572725" FromRole="CONFIGURATION" ToRole="ANIMALS" />
+          <NavigationProperty Name="PARTS_OF_THE_BODY" Relationship="Self.FK__PARTS_OF___CONFI__22AA2996" FromRole="CONFIGURATION" ToRole="PARTS_OF_THE_BODY" />
+          <NavigationProperty Name="PEOPLE" Relationship="Self.FK__PEOPLE__CONFIG__1CF15040" FromRole="CONFIGURATION" ToRole="PEOPLE" />
+        </EntityType>
+        <EntityType Name="IMG_FILES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMG_FILEDATA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ANIMALS" Relationship="Self.FK__ANIMALS__A_ID__25869641" FromRole="IMG_FILES" ToRole="ANIMALS" />
+          <NavigationProperty Name="PARTS_OF_THE_BODY" Relationship="Self.FK__PARTS_OF___PR_ID__1FCDBCEB" FromRole="IMG_FILES" ToRole="PARTS_OF_THE_BODY" />
+          <NavigationProperty Name="PEOPLE" Relationship="Self.FK__PEOPLE__P_ID__182C9B23" FromRole="IMG_FILES" ToRole="PEOPLE" />
+          <NavigationProperty Name="THINGS" Relationship="Self.FK__THINGS__T_ID__2C3393D0" FromRole="IMG_FILES" ToRole="THINGS" />
+          <Property Name="DISPLAY_SATUS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PARTS_OF_THE_BODY">
+          <Key>
+            <PropertyRef Name="PR_ID" />
+          </Key>
+          <Property Name="PR_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTION" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POINT_V" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CONFIG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONFIGURATION" Relationship="Self.FK__PARTS_OF___CONFI__22AA2996" FromRole="PARTS_OF_THE_BODY" ToRole="CONFIGURATION" />
+          <NavigationProperty Name="IMG_FILES" Relationship="Self.FK__PARTS_OF___PR_ID__1FCDBCEB" FromRole="PARTS_OF_THE_BODY" ToRole="IMG_FILES" />
+          <NavigationProperty Name="POINTS_OF_VIEW" Relationship="Self.FK__PARTS_OF___POINT__21B6055D" FromRole="PARTS_OF_THE_BODY" ToRole="POINTS_OF_VIEW" />
+        </EntityType>
+        <EntityType Name="PEOPLE">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTION" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SEX" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CLOTHES" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTURE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="POINT_V" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CONFIG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONFIGURATION" Relationship="Self.FK__PEOPLE__CONFIG__1CF15040" FromRole="PEOPLE" ToRole="CONFIGURATION" />
+          <NavigationProperty Name="IMG_FILES" Relationship="Self.FK__PEOPLE__P_ID__182C9B23" FromRole="PEOPLE" ToRole="IMG_FILES" />
+          <NavigationProperty Name="POINTS_OF_VIEW" Relationship="Self.FK__PEOPLE__POINT_V__1BFD2C07" FromRole="PEOPLE" ToRole="POINTS_OF_VIEW" />
+          <NavigationProperty Name="POSTURES" Relationship="Self.FK__PEOPLE__POSTURE__1B0907CE" FromRole="PEOPLE" ToRole="POSTURES" />
+        </EntityType>
+        <EntityType Name="POINTS_OF_VIEW">
+          <Key>
+            <PropertyRef Name="V_KEY" />
+          </Key>
+          <Property Name="V_KEY" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="V_NAME" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ANIMALS" Relationship="Self.FK__ANIMALS__POINT_V__286302EC" FromRole="POINTS_OF_VIEW" ToRole="ANIMALS" />
+          <NavigationProperty Name="PARTS_OF_THE_BODY" Relationship="Self.FK__PARTS_OF___POINT__21B6055D" FromRole="POINTS_OF_VIEW" ToRole="PARTS_OF_THE_BODY" />
+          <NavigationProperty Name="PEOPLE" Relationship="Self.FK__PEOPLE__POINT_V__1BFD2C07" FromRole="POINTS_OF_VIEW" ToRole="PEOPLE" />
+          <NavigationProperty Name="THINGS" Relationship="Self.FK__THINGS__POINT_V__2E1BDC42" FromRole="POINTS_OF_VIEW" ToRole="THINGS" />
+        </EntityType>
+        <EntityType Name="POSTURES">
+          <Key>
+            <PropertyRef Name="P_KEY" />
+          </Key>
+          <Property Name="P_KEY" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="P_NAME" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ANIMALS" Relationship="Self.FK__ANIMALS__POSTURE__276EDEB3" FromRole="POSTURES" ToRole="ANIMALS" />
+          <NavigationProperty Name="PEOPLE" Relationship="Self.FK__PEOPLE__POSTURE__1B0907CE" FromRole="POSTURES" ToRole="PEOPLE" />
+        </EntityType>
+        <EntityType Name="THINGS">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTION" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURFACE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POINT_V" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IMG_FILES" Relationship="Self.FK__THINGS__T_ID__2C3393D0" FromRole="THINGS" ToRole="IMG_FILES" />
+          <NavigationProperty Name="POINTS_OF_VIEW" Relationship="Self.FK__THINGS__POINT_V__2E1BDC42" FromRole="THINGS" ToRole="POINTS_OF_VIEW" />
+        </EntityType>
+        <Association Name="FK__ANIMALS__A_ID__25869641">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="A_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ANIMALS__CONFIG__29572725">
+          <End Role="CONFIGURATION" Type="Self.CONFIGURATION" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIGURATION">
+              <PropertyRef Name="C_KEY" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="CONFIG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ANIMALS__POINT_V__286302EC">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ANIMALS__POSTURE__276EDEB3">
+          <End Role="POSTURES" Type="Self.POSTURES" Multiplicity="1" />
+          <End Role="ANIMALS" Type="Self.ANIMALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSTURES">
+              <PropertyRef Name="P_KEY" />
+            </Principal>
+            <Dependent Role="ANIMALS">
+              <PropertyRef Name="POSTURE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTS_OF___CONFI__22AA2996">
+          <End Role="CONFIGURATION" Type="Self.CONFIGURATION" Multiplicity="1" />
+          <End Role="PARTS_OF_THE_BODY" Type="Self.PARTS_OF_THE_BODY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIGURATION">
+              <PropertyRef Name="C_KEY" />
+            </Principal>
+            <Dependent Role="PARTS_OF_THE_BODY">
+              <PropertyRef Name="CONFIG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__CONFIG__1CF15040">
+          <End Role="CONFIGURATION" Type="Self.CONFIGURATION" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIGURATION">
+              <PropertyRef Name="C_KEY" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="CONFIG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTS_OF___PR_ID__1FCDBCEB">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="PARTS_OF_THE_BODY" Type="Self.PARTS_OF_THE_BODY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARTS_OF_THE_BODY">
+              <PropertyRef Name="PR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__P_ID__182C9B23">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THINGS__T_ID__2C3393D0">
+          <End Role="IMG_FILES" Type="Self.IMG_FILES" Multiplicity="1" />
+          <End Role="THINGS" Type="Self.THINGS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMG_FILES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="THINGS">
+              <PropertyRef Name="T_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTS_OF___POINT__21B6055D">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="PARTS_OF_THE_BODY" Type="Self.PARTS_OF_THE_BODY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="PARTS_OF_THE_BODY">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__POINT_V__1BFD2C07">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEOPLE__POSTURE__1B0907CE">
+          <End Role="POSTURES" Type="Self.POSTURES" Multiplicity="1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSTURES">
+              <PropertyRef Name="P_KEY" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="POSTURE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THINGS__POINT_V__2E1BDC42">
+          <End Role="POINTS_OF_VIEW" Type="Self.POINTS_OF_VIEW" Multiplicity="1" />
+          <End Role="THINGS" Type="Self.THINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINTS_OF_VIEW">
+              <PropertyRef Name="V_KEY" />
+            </Principal>
+            <Dependent Role="THINGS">
+              <PropertyRef Name="POINT_V" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SKETCH_TTIMEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ANIMALS" EntityType="Self.ANIMALS" />
+          <EntitySet Name="CONFIGURATION" EntityType="Self.CONFIGURATION" />
+          <EntitySet Name="IMG_FILES" EntityType="Self.IMG_FILES" />
+          <EntitySet Name="PARTS_OF_THE_BODY" EntityType="Self.PARTS_OF_THE_BODY" />
+          <EntitySet Name="PEOPLE" EntityType="Self.PEOPLE" />
+          <EntitySet Name="POINTS_OF_VIEW" EntityType="Self.POINTS_OF_VIEW" />
+          <EntitySet Name="POSTURES" EntityType="Self.POSTURES" />
+          <EntitySet Name="THINGS" EntityType="Self.THINGS" />
+          <AssociationSet Name="FK__ANIMALS__A_ID__25869641" Association="Self.FK__ANIMALS__A_ID__25869641">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ANIMALS__CONFIG__29572725" Association="Self.FK__ANIMALS__CONFIG__29572725">
+            <End Role="CONFIGURATION" EntitySet="CONFIGURATION" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ANIMALS__POINT_V__286302EC" Association="Self.FK__ANIMALS__POINT_V__286302EC">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ANIMALS__POSTURE__276EDEB3" Association="Self.FK__ANIMALS__POSTURE__276EDEB3">
+            <End Role="POSTURES" EntitySet="POSTURES" />
+            <End Role="ANIMALS" EntitySet="ANIMALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTS_OF___CONFI__22AA2996" Association="Self.FK__PARTS_OF___CONFI__22AA2996">
+            <End Role="CONFIGURATION" EntitySet="CONFIGURATION" />
+            <End Role="PARTS_OF_THE_BODY" EntitySet="PARTS_OF_THE_BODY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__CONFIG__1CF15040" Association="Self.FK__PEOPLE__CONFIG__1CF15040">
+            <End Role="CONFIGURATION" EntitySet="CONFIGURATION" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTS_OF___PR_ID__1FCDBCEB" Association="Self.FK__PARTS_OF___PR_ID__1FCDBCEB">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="PARTS_OF_THE_BODY" EntitySet="PARTS_OF_THE_BODY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__P_ID__182C9B23" Association="Self.FK__PEOPLE__P_ID__182C9B23">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THINGS__T_ID__2C3393D0" Association="Self.FK__THINGS__T_ID__2C3393D0">
+            <End Role="IMG_FILES" EntitySet="IMG_FILES" />
+            <End Role="THINGS" EntitySet="THINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTS_OF___POINT__21B6055D" Association="Self.FK__PARTS_OF___POINT__21B6055D">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="PARTS_OF_THE_BODY" EntitySet="PARTS_OF_THE_BODY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__POINT_V__1BFD2C07" Association="Self.FK__PEOPLE__POINT_V__1BFD2C07">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEOPLE__POSTURE__1B0907CE" Association="Self.FK__PEOPLE__POSTURE__1B0907CE">
+            <End Role="POSTURES" EntitySet="POSTURES" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THINGS__POINT_V__2E1BDC42" Association="Self.FK__THINGS__POINT_V__2E1BDC42">
+            <End Role="POINTS_OF_VIEW" EntitySet="POINTS_OF_VIEW" />
+            <End Role="THINGS" EntitySet="THINGS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SKETCH_TTIMEModelContainer" CdmEntityContainer="SKETCH_TTIMEEntities">
+          <EntitySetMapping Name="ANIMALS">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.ANIMALS">
+              <MappingFragment StoreEntitySet="ANIMALS">
+                <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+                <ScalarProperty Name="SECTION" ColumnName="SECTION" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="SPECIES" ColumnName="SPECIES" />
+                <ScalarProperty Name="POSTURE" ColumnName="POSTURE" />
+                <ScalarProperty Name="POINT_V" ColumnName="POINT_V" />
+                <ScalarProperty Name="CONFIG" ColumnName="CONFIG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATION">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.CONFIGURATION">
+              <MappingFragment StoreEntitySet="CONFIGURATION">
+                <ScalarProperty Name="C_KEY" ColumnName="C_KEY" />
+                <ScalarProperty Name="C_NAME" ColumnName="C_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMG_FILES">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.IMG_FILES">
+              <MappingFragment StoreEntitySet="IMG_FILES">
+                <ScalarProperty Name="DISPLAY_SATUS" ColumnName="DISPLAY_SATUS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IMG_FILEDATA" ColumnName="IMG_FILEDATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARTS_OF_THE_BODY">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.PARTS_OF_THE_BODY">
+              <MappingFragment StoreEntitySet="PARTS_OF_THE_BODY">
+                <ScalarProperty Name="PR_ID" ColumnName="PR_ID" />
+                <ScalarProperty Name="SECTION" ColumnName="SECTION" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="POINT_V" ColumnName="POINT_V" />
+                <ScalarProperty Name="CONFIG" ColumnName="CONFIG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEOPLE">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.PEOPLE">
+              <MappingFragment StoreEntitySet="PEOPLE">
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="SECTION" ColumnName="SECTION" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="CLOTHES" ColumnName="CLOTHES" />
+                <ScalarProperty Name="POSTURE" ColumnName="POSTURE" />
+                <ScalarProperty Name="POINT_V" ColumnName="POINT_V" />
+                <ScalarProperty Name="CONFIG" ColumnName="CONFIG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POINTS_OF_VIEW">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.POINTS_OF_VIEW">
+              <MappingFragment StoreEntitySet="POINTS_OF_VIEW">
+                <ScalarProperty Name="V_KEY" ColumnName="V_KEY" />
+                <ScalarProperty Name="V_NAME" ColumnName="V_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSTURES">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.POSTURES">
+              <MappingFragment StoreEntitySet="POSTURES">
+                <ScalarProperty Name="P_KEY" ColumnName="P_KEY" />
+                <ScalarProperty Name="P_NAME" ColumnName="P_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THINGS">
+            <EntityTypeMapping TypeName="SKETCH_TTIMEModel.THINGS">
+              <MappingFragment StoreEntitySet="THINGS">
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="SECTION" ColumnName="SECTION" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="SURFACE" ColumnName="SURFACE" />
+                <ScalarProperty Name="POINT_V" ColumnName="POINT_V" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

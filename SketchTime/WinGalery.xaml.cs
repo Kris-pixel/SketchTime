@@ -19,11 +19,12 @@ namespace SketchTime
     /// </summary>
     public partial class WinGalery : Window
     {
-        Galery gal = new Galery();
+        Galery gal;
         Statistics stat = new Statistics();
-        public WinGalery()
+        public WinGalery(string curDir)
         {
             InitializeComponent();
+            gal = new Galery(curDir);
             framPlace.Content = gal;
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SketchTime"
         mc:Ignorable="d"
-        Title="WinGalery" Height="450" Width="800"
+        Title="WinGalery" Height="600" Width="800"
          WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True" 

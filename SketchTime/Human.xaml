@@ -8,7 +8,7 @@
       d:DesignHeight="360" d:DesignWidth="300"
       Title="Human">
 
-    <Grid>
+    <Grid Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="115"/>
             <ColumnDefinition/>
@@ -27,59 +27,58 @@
 
         <Label Grid.Column="0" Grid.Row="1" 
             Content="Пол:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="1"
+        <ComboBox Grid.Column="1" Grid.Row="1" Name="SexCB"
             HorizontalAlignment="Center" VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Мужской</ComboBoxItem>
             <ComboBoxItem>Женский</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любой</ComboBoxItem>
+            <ComboBoxItem Name="Sl"  IsSelected="True">Любой</ComboBoxItem>
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="2"
             Content="Одежда:" HorizontalAlignment="Right"  VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="2"
+        <ComboBox Grid.Column="1" Grid.Row="2" Name="ClothesCB"
             HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Свободная</ComboBoxItem>
             <ComboBoxItem>Облегающая</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любая</ComboBoxItem>
+            <ComboBoxItem Name="Cl" IsSelected="True">Любая</ComboBoxItem>
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="3"
             Content="Поза:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="3"
+        <ComboBox Grid.Column="1" Grid.Row="3" Name="PostureCB"
             HorizontalAlignment="Center" VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Статическая</ComboBoxItem>
             <ComboBoxItem>Динамическая</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любая</ComboBoxItem>
+            <ComboBoxItem Name="Pl" IsSelected="True">Любая</ComboBoxItem>
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="4" 
             Content="Конфигурация:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="4"
+        <ComboBox Grid.Column="1" Grid.Row="4" Name="ConfigCB"
             HorizontalAlignment="Center" VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Кожа</ComboBoxItem>
             <ComboBoxItem>Кости</ComboBoxItem>
             <ComboBoxItem>Мышцы</ComboBoxItem>
             <ComboBoxItem>Гипс</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любая</ComboBoxItem>
+            <ComboBoxItem Name="Configll" IsSelected="True">Любая</ComboBoxItem>
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="5" 
             Content="Вид:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="5"
+        <ComboBox Grid.Column="1" Grid.Row="5" Name="ViewCB"
             HorizontalAlignment="Center" VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Сверху</ComboBoxItem>
             <ComboBoxItem>Снизу</ComboBoxItem>
             <ComboBoxItem>Сбоку</ComboBoxItem>
             <ComboBoxItem>Спереди</ComboBoxItem>
             <ComboBoxItem>Сзади</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любой</ComboBoxItem>
+            <ComboBoxItem Name="Vl" IsSelected="True">Любой</ComboBoxItem>
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="6"
             Content="Время:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}" Padding="5"/>
-        <ComboBox Grid.Column="1" Grid.Row="6"
+        <ComboBox Grid.Column="1" Grid.Row="6" Name="TimeCB"
             HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Margin="0">
-            <ComboBoxItem>30 секунд</ComboBoxItem>
             <ComboBoxItem>1 минута</ComboBoxItem>
             <ComboBoxItem IsSelected="True">5 минут</ComboBoxItem>
             <ComboBoxItem>10 минут</ComboBoxItem>

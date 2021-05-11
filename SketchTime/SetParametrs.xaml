@@ -10,8 +10,7 @@
         Background="Transparent"
         AllowsTransparency="True" 
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        Topmost="True">
+        WindowStartupLocation="CenterScreen">
     <Border Style="{StaticResource stack}">
         <Grid Margin="0">
             <Grid.RowDefinitions>
@@ -20,7 +19,10 @@
                 <RowDefinition/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <Button Content="×" Grid.Row="0"
+            <Label Content="Параметры выборки изображений" Opacity="0.6"
+                   Style="{StaticResource standarLabel}"
+                   Grid.Row="0"/>
+            <Button Content="×" Grid.Row="0" IsCancel="True"
                    Height="25" Width="20"
                     FontWeight="Black"
                    Style="{StaticResource exitB}"
@@ -58,7 +60,7 @@
                     BorderBrush="#29a19c"
                     CornerRadius="5"
                     BorderThickness="1">
-                <Button  Content="OK" Style="{StaticResource exitB}"
+                <Button IsDefault="True"  Content="OK" Style="{StaticResource exitB}"
                          Click="ButtonOK_Click"/>
             </Border>
         </Grid>

@@ -10,7 +10,7 @@
       ShowsNavigationUI="True">
 
 
-    <Grid>
+    <Grid Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="115"/>
             <ColumnDefinition/>
@@ -26,33 +26,32 @@
 
         <Label Grid.Column="0" Grid.Row="1"
             Content="Конфигурация:" HorizontalAlignment="Right"  VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="1"
+        <ComboBox Grid.Column="1" Grid.Row="1" Name="ConfigCB"
             HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Кожа</ComboBoxItem>
             <ComboBoxItem>Кости</ComboBoxItem>
             <ComboBoxItem>Мышцы</ComboBoxItem>
             <ComboBoxItem>Гипс</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любая</ComboBoxItem>
+            <ComboBoxItem Name="Configl" IsSelected="True">Любая</ComboBoxItem>
         </ComboBox>
 
 
         <Label Grid.Column="0" Grid.Row="2" 
             Content="Вид:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}"/>
-        <ComboBox Grid.Column="1" Grid.Row="2"
+        <ComboBox Grid.Column="1" Grid.Row="2" Name="ViewCB"
             HorizontalAlignment="Center" VerticalAlignment="Center" Width="120">
             <ComboBoxItem>Сверху</ComboBoxItem>
             <ComboBoxItem>Снизу</ComboBoxItem>
             <ComboBoxItem>Сбоку</ComboBoxItem>
             <ComboBoxItem>Спереди</ComboBoxItem>
             <ComboBoxItem>Сзади</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Любой</ComboBoxItem>
+            <ComboBoxItem Name="Vl" IsSelected="True">Любой</ComboBoxItem>
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="3"
             Content="Время:" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource standarLabel}" Padding="5"/>
-        <ComboBox Grid.Column="1" Grid.Row="3"
+        <ComboBox Grid.Column="1" Grid.Row="3" Name="TimeCB"
             HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Margin="0">
-            <ComboBoxItem>30 секунд</ComboBoxItem>
             <ComboBoxItem>1 минута</ComboBoxItem>
             <ComboBoxItem IsSelected="True">5 минут</ComboBoxItem>
             <ComboBoxItem>10 минут</ComboBoxItem>

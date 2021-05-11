@@ -37,9 +37,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,20 +86,65 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="additionalClasses.cs" />
+    <Compile Include="AddWin.xaml.cs">
+      <DependentUpon>AddWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ANIMALS.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Animals.xaml.cs">
       <DependentUpon>Animals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CONFIGURATION.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DelWin.xaml.cs">
+      <DependentUpon>DelWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Human.xaml.cs">
       <DependentUpon>Human.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IMG_FILES.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Parts.xaml.cs">
       <DependentUpon>Parts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PARTS_OF_THE_BODY.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PEOPLE.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POINTS_OF_VIEW.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSTURES.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SetParametrs.xaml.cs">
       <DependentUpon>SetParametrs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SketchTime_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SketchTime_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SketchTime_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SketchTime_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SketchTime_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="THINGS.cs">
+      <DependentUpon>SketchTime_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Things.xaml.cs">
       <DependentUpon>Things.xaml</DependentUpon>
@@ -101,7 +155,15 @@
     <Compile Include="WinResizeCanvas.xaml.cs">
       <DependentUpon>WinResizeCanvas.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DelWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +246,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="SketchTime_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SketchTime_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SketchTime_Model.edmx.diagram">
+      <DependentUpon>SketchTime_Model.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -216,96 +285,6 @@
     <EmbeddedResource Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imgs\8bf5a957c749a8d02b1fd8a13611f452.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\69f9335c6f6e8d9391a4cfef349736d1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\aebbbc76deb84694b02d0f75c70121e1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\617b45c5d09a54cf9156d1b185a89c1c.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\e57364a245648d76e4fb4a59a19b8dfe.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\037018ed2689a6d443b64bc30c5a0e8e.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\b0393285090a2f4a79dab85c4335edff--asian-street-fashion-asian-street-style.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\23.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\D3jtnX_EjZAAYXkg_BwSsdL6W0tjp8sU4YsYjcmCZPE.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\7c67fbb71179bc831d1e3252f15fd18b.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\2a29f86937be92fe582757f268019283.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\2-10.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\หมวก4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\original.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\Esmrk6_XMAQJxIT.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\35681a5b1210d0178aad6ca527a20248.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\2e81a21eb4fe0f0aebee4785584d8f77.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\5aef8bced3788cfeefbe61df11c4381a.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\07549bbdf459cd38a29dacb4d1a95504.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\2f3504d2aa725ae08b584900e4ea373d.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\1527af03731256b98271aebfbeded611.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\c24a4f8811adfde0339d248300b7554b.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\7fa4bf5d4125eceb868c76896eae85d9.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\996aef693ed7cb1265f04680c45b8615.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\b00f6c4e8380381dd7c2bf76ecb6f169.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\46bb41e497c4285d6a3a40ffd95a399e.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\9c62bba4f436da1b3e9cb36628a40ee7.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\5fc473a94136a65f30ab4610314fab31.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\fd92ca20d0a6e51ebd51e977c8149dc1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgs\1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\bars.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,5 +308,62 @@
   <ItemGroup>
     <Resource Include="eraserr.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imgs\037018ed2689a6d443b64bc30c5a0e8e.jpg" />
+    <Resource Include="imgs\07549bbdf459cd38a29dacb4d1a95504.jpg" />
+    <Resource Include="imgs\1.jpg" />
+    <Resource Include="imgs\1527af03731256b98271aebfbeded611.jpg" />
+    <Resource Include="imgs\23.jpg" />
+    <Resource Include="imgs\2e81a21eb4fe0f0aebee4785584d8f77.jpg" />
+    <Resource Include="imgs\4.jpg" />
+    <Resource Include="imgs\46bb41e497c4285d6a3a40ffd95a399e.jpg" />
+    <Resource Include="imgs\5fc473a94136a65f30ab4610314fab31.jpg" />
+    <Resource Include="imgs\617b45c5d09a54cf9156d1b185a89c1c.jpg" />
+    <Resource Include="imgs\7c67fbb71179bc831d1e3252f15fd18b.jpg" />
+    <Resource Include="imgs\7fa4bf5d4125eceb868c76896eae85d9.jpg" />
+    <Resource Include="imgs\akorshe.jpg" />
+    <Resource Include="imgs\b00f6c4e8380381dd7c2bf76ecb6f169.jpg" />
+    <Resource Include="imgs\b0393285090a2f4a79dab85c4335edff--asian-street-fashion-asian-street-style.jpg" />
+    <Resource Include="imgs\chameleon.jpg" />
+    <Resource Include="imgs\dynamic_cat.jpg" />
+    <Resource Include="imgs\e57364a245648d76e4fb4a59a19b8dfe.jpg" />
+    <Resource Include="imgs\fd92ca20d0a6e51ebd51e977c8149dc1.jpg" />
+    <Resource Include="imgs\fight.jpg" />
+    <Resource Include="imgs\flower_glass.jpg" />
+    <Resource Include="imgs\glass_bottle.jpg" />
+    <Resource Include="imgs\hands.jpg" />
+    <Resource Include="imgs\hasky.jpg" />
+    <Resource Include="imgs\K1HT1qClZC8.jpg" />
+    <Resource Include="imgs\kawaii_cat.jpg" />
+    <Resource Include="imgs\leg.jpg" />
+    <Resource Include="imgs\lilhasky.jpg" />
+    <Resource Include="imgs\obrubovka6.jpg" />
+    <Resource Include="imgs\original.jpg" />
+    <Resource Include="imgs\owl.jpg" />
+    <Resource Include="imgs\planeman.jpg" />
+    <Resource Include="imgs\redy_to_run.jpg" />
+    <Resource Include="imgs\runner.jpg" />
+    <Resource Include="imgs\skull_front.jpg" />
+    <Resource Include="imgs\skull_side.jpg" />
+    <Resource Include="imgs\stillafe.jpg" />
+    <Resource Include="imgs\textile.jpg" />
+    <Resource Include="imgs\thing1.jpg" />
+    <Resource Include="imgs\thing2.jpg" />
+    <Resource Include="imgs\XFFy2QDbvwg.jpg" />
+    <Content Include="SketchTime_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SketchTime_Model.edmx</DependentUpon>
+      <LastGenOutput>SketchTime_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SketchTime_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SketchTime_Model.edmx</DependentUpon>
+      <LastGenOutput>SketchTime_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
