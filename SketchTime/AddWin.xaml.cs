@@ -158,6 +158,7 @@ namespace SketchTime
                         default:
                             break;
                     }
+                    MessageBox.Show("Изображение успешно добавлено");
                 }
                 catch(Exception ex)
                 {
@@ -298,6 +299,10 @@ namespace SketchTime
             if (findKey.Contains("Сверху"))
             {
                 return "U";
+            }
+            if (findKey.Contains("Динамич"))
+            {
+                return "D";
             }
             else
             {

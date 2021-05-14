@@ -263,7 +263,8 @@ namespace SketchTime
                     {
                         DisplayImage(imgCounter);
                     }
-                    
+                    MainCanvas.Strokes.Clear();
+
                 }
                 catch (Exception ex)
                 {
@@ -275,10 +276,6 @@ namespace SketchTime
         {
             AddWin addWin = new AddWin();
             bool? addRez = addWin.ShowDialog();
-            if(addRez.HasValue && addRez.Value)
-            {
-                MessageBox.Show("Изображение успешно добавлено");
-            }
         }
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
@@ -300,7 +297,10 @@ namespace SketchTime
                                     using (SKETCH_TTIMEEntities context = new SKETCH_TTIMEEntities())
                                     {
                                         PEOPLE delHum = context.PEOPLE.FirstOrDefault(p => p.NUMBER == SelectionParanerts.DelObj.delNumber);
-
+                                        if (Convert.ToInt32(NunInSectLable.Content.ToString()) == SelectionParanerts.DelObj.delNumber)
+                                        {
+                                            Next_Click(sender, e);
+                                        }
 
                                         if (delHum != null)
                                         {
@@ -309,6 +309,7 @@ namespace SketchTime
 
                                             if (File.Exists(curDir + delImg.IMG_FILEDATA))
                                             {
+                                          
                                                 File.Delete(curDir + delImg.IMG_FILEDATA);
                                                 context.PEOPLE.Remove(delHum);
                                                 context.IMG_FILES.Remove(delImg);
@@ -330,7 +331,10 @@ namespace SketchTime
                                     using (SKETCH_TTIMEEntities context = new SKETCH_TTIMEEntities())
                                     {
                                         PARTS_OF_THE_BODY delPart = context.PARTS_OF_THE_BODY.FirstOrDefault(p => p.NUMBER == SelectionParanerts.DelObj.delNumber);
-
+                                        if (Convert.ToInt32(NunInSectLable.Content.ToString()) == SelectionParanerts.DelObj.delNumber)
+                                        {
+                                            Next_Click(sender, e);
+                                        }
 
                                         if (delPart != null)
                                         {
@@ -360,7 +364,10 @@ namespace SketchTime
                                     using (SKETCH_TTIMEEntities context = new SKETCH_TTIMEEntities())
                                     {
                                         ANIMALS delA = context.ANIMALS.FirstOrDefault(p => p.NUMBER == SelectionParanerts.DelObj.delNumber);
-
+                                        if (Convert.ToInt32(NunInSectLable.Content.ToString()) == SelectionParanerts.DelObj.delNumber)
+                                        {
+                                            Next_Click(sender, e);
+                                        }
 
                                         if (delA != null)
                                         {
@@ -390,7 +397,10 @@ namespace SketchTime
                                     using (SKETCH_TTIMEEntities context = new SKETCH_TTIMEEntities())
                                     {
                                         THINGS delT = context.THINGS.FirstOrDefault(p => p.NUMBER == SelectionParanerts.DelObj.delNumber);
-
+                                        if (Convert.ToInt32(NunInSectLable.Content.ToString()) == SelectionParanerts.DelObj.delNumber)
+                                        {
+                                            Next_Click(sender, e);
+                                        }
 
                                         if (delT != null)
                                         {
@@ -479,6 +489,12 @@ namespace SketchTime
                     MessageBox.Show(ex.Message + "\n" + ex.Source);
                 }
             }
+        }
+
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Разработчик: Васильева Кристина Юрьевна\n Версия: 55.37.09\n 2021 год ");
         }
 
 
@@ -572,26 +588,7 @@ namespace SketchTime
             }
         }
 
-       
 
 
-
-
-
-
-
-
-
-        /*private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
-            if (dlg.ShowDialog() == true)
-            {
-                FileStream fileStream = new FileStream(dlg.FileName, FileMode.Create);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                range.Save(fileStream, DataFormats.Rtf);
-            }
-        }*/
     }
 }

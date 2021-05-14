@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace SketchTime
 {
@@ -71,59 +72,61 @@ namespace SketchTime
                 case 1:
                     using (SKETCH_TTIMEEntities db = new SKETCH_TTIMEEntities())
                     {
-                        var joinedTAblesH = db.IMG_FILES.Join(db.PEOPLE,
-                          i => i.ID,
-                          p => p.P_ID,
-                          (i, p) => new
-                          {
-                              display = i.DISPLAY_SATUS,
-                              idImg = i.ID,
-                              Path = i.IMG_FILEDATA,
-                              Section = p.SECTION,
-                              Number = p.NUMBER,
-                              Sex = p.SEX,
-                              Posture = p.POSTURE,
-                              View = p.POINT_V,
-                              Congig = p.CONFIG,
-                              Clothes = p.CLOTHES
-                          });
+                            var joinedTAblesH = db.IMG_FILES.Join(db.PEOPLE,
+                              i => i.ID,
+                              p => p.P_ID,
+                              (i, p) => new
+                              {
+                                  display = i.DISPLAY_SATUS,
+                                  idImg = i.ID,
+                                  Path = i.IMG_FILEDATA,
+                                  Section = p.SECTION,
+                                  Number = p.NUMBER,
+                                  Sex = p.SEX,
+                                  Posture = p.POSTURE,
+                                  View = p.POINT_V,
+                                  Congig = p.CONFIG,
+                                  Clothes = p.CLOTHES
+                              });
 
-                        joinedTAblesH = joinedTAblesH.Where(x => x.Section == "Человек");
-                        if (!SelectionParanerts.SelectHuman.sex.Contains("л"))
-                        {
-                            joinedTAblesH = joinedTAblesH.Where(x => x.Sex == SelectionParanerts.SelectHuman.sex);
-                        }
-                        if (!SelectionParanerts.SelectHuman.posture.Contains("Люб"))
-                        {
-                            var temp = from p in db.POSTURES
-                                       where p.P_NAME == SelectionParanerts.SelectHuman.posture
-                                       select p.P_KEY;
-                            joinedTAblesH = joinedTAblesH.Where(x => x.Posture == temp.FirstOrDefault());
-                        }
-                        if (!SelectionParanerts.SelectHuman.view.Contains("Люб"))
-                        {
-                            var temp = from v in db.POINTS_OF_VIEW
-                                       where v.V_NAME == SelectionParanerts.SelectHuman.view
-                                       select v.V_KEY;
-                            joinedTAblesH = joinedTAblesH.Where(x => x.View == temp.FirstOrDefault());
-                        }
-                        if (!SelectionParanerts.SelectHuman.config.Contains("Люб"))
-                        {
-                            var temp = from c in db.CONFIGURATION
-                                       where c.C_NAME == SelectionParanerts.SelectHuman.config
-                                       select c.C_KEY;
-                            joinedTAblesH = joinedTAblesH.Where(x => x.Congig == temp.FirstOrDefault());
-                        }
-                        if (!SelectionParanerts.SelectHuman.clothes.Contains("Люб"))
-                        {
-                            joinedTAblesH = joinedTAblesH.Where(x => x.Clothes == SelectionParanerts.SelectHuman.clothes);
-                        }
-                        joinedTAblesH = joinedTAblesH.OrderBy(p => p.display);
-                        displaySection = joinedTAblesH.Select(p => p.Section).ToList();
-                        displayNumbers = joinedTAblesH.Select(p => p.Number).ToList();
-                        displayId = joinedTAblesH.Select(p => p.idImg).ToList();
-                        forDisplay = joinedTAblesH.Select(p => p.Path).ToList();
-                        if (forDisplay.Count() == 0)
+                            joinedTAblesH = joinedTAblesH.Where(x => x.Section == "Человек");
+                            if (!SelectionParanerts.SelectHuman.sex.Contains("л"))
+                            {
+                                joinedTAblesH = joinedTAblesH.Where(x => x.Sex == SelectionParanerts.SelectHuman.sex);
+                            }
+                            if (!SelectionParanerts.SelectHuman.posture.Contains("Люб"))
+                            {
+                                var temp = from p in db.POSTURES
+                                           where p.P_NAME == SelectionParanerts.SelectHuman.posture
+                                           select p.P_KEY;
+                                joinedTAblesH = joinedTAblesH.Where(x => x.Posture == temp.FirstOrDefault());
+                            }
+                            if (!SelectionParanerts.SelectHuman.view.Contains("Люб"))
+                            {
+                                var temp = from v in db.POINTS_OF_VIEW
+                                           where v.V_NAME == SelectionParanerts.SelectHuman.view
+                                           select v.V_KEY;
+                                joinedTAblesH = joinedTAblesH.Where(x => x.View == temp.FirstOrDefault());
+                            }
+                            if (!SelectionParanerts.SelectHuman.config.Contains("Люб"))
+                            {
+                                var temp = from c in db.CONFIGURATION
+                                           where c.C_NAME == SelectionParanerts.SelectHuman.config
+                                           select c.C_KEY;
+                                joinedTAblesH = joinedTAblesH.Where(x => x.Congig == temp.FirstOrDefault());
+                            }
+                            if (!SelectionParanerts.SelectHuman.clothes.Contains("Люб"))
+                            {
+                                joinedTAblesH = joinedTAblesH.Where(x => x.Clothes == SelectionParanerts.SelectHuman.clothes);
+                            }
+                            joinedTAblesH = joinedTAblesH.OrderBy(p => p.display);
+                            displaySection = joinedTAblesH.Select(p => p.Section).ToList();
+                            displayNumbers = joinedTAblesH.Select(p => p.Number).ToList();
+                            displayId = joinedTAblesH.Select(p => p.idImg).ToList();
+                            forDisplay = joinedTAblesH.Select(p => p.Path).ToList();
+
+
+                            if (forDisplay.Count() == 0)
                         {
                             MessageBox.Show("К сожалению подходящих изображений не нашлось:(\n Поменяйте параметры.");
                         }
@@ -280,28 +283,33 @@ namespace SketchTime
 
         public void DisplayImage(int imgCounter)
         {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.UriSource = new Uri(curDir + forDisplay[imgCounter]);
+            image.EndInit();
 
-            CurrentImg.Source = BitmapFrame.Create(new Uri(curDir + forDisplay[imgCounter]));
-            using (SKETCH_TTIMEEntities context = new SKETCH_TTIMEEntities())
-            {
-                var display = context.IMG_FILES.Find(displayId[imgCounter]);
-                display.DISPLAY_SATUS = display.DISPLAY_SATUS + 1;
-                context.SaveChanges();
+                CurrentImg.Source = image;
+                using (SKETCH_TTIMEEntities context = new SKETCH_TTIMEEntities())
+                {
+                    var display = context.IMG_FILES.Find(displayId[imgCounter]);
 
-                time = SelectionParanerts.time;
-                if (forDisplay.Count() == context.IMG_FILES.Count())
-                {
-                    SectionLable.Content = "Все ";
-                    NunInSectLable.Content = "--";
-                    spoilerLabel.Visibility = Visibility.Hidden;
+                    context.SaveChanges();
+
+                    time = SelectionParanerts.time;
+                    if (forDisplay.Count() == context.IMG_FILES.Count())
+                    {
+                        SectionLable.Content = "Все ";
+                        NunInSectLable.Content = "--";
+                        spoilerLabel.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        SectionLable.Content = displaySection[imgCounter];
+                        NunInSectLable.Content = displayNumbers[imgCounter];
+                        spoilerLabel.Visibility = Visibility.Visible;
+                    }
                 }
-                else
-                {
-                    SectionLable.Content = displaySection[imgCounter];
-                    NunInSectLable.Content = displayNumbers[imgCounter];
-                    spoilerLabel.Visibility = Visibility.Visible;
-                }
-            }
            
         }
 

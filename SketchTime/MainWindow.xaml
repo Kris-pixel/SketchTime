@@ -44,7 +44,7 @@
                       Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"
                     Click="Galery_Click"/>
 
-            <Button Name="About" Content="{StaticResource _About}" Width="91.333" Height="30"
+            <Button Name="About" Content="{StaticResource _About}" Width="91.333" Height="30" Click="About_Click"
                       Template="{StaticResource topMenu}" Style="{DynamicResource menuIt}"/>
 
         </StackPanel>
@@ -165,8 +165,9 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="1" VerticalAlignment="Top"  Width="30" Height="400" Style="{StaticResource stack}" Margin="0,5,0,0">
                     <StackPanel   Orientation="Vertical" >
+                        
                         <ToggleButton Name="Brush"  Style="{DynamicResource tBut}" ToolTip="Кисть"
-                                  HorizontalAlignment="Stretch" Height="30"
+                                  HorizontalAlignment="Stretch" Height="30" 
                                   Template="{StaticResource toolsTogl}" Click="Brush_Click" IsChecked="True">
                             <ToggleButton.Content>
                                 <Image Source="drawing.png" Stretch="None"/>
